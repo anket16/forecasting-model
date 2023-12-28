@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maximum Temperature Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        label {
+            flex: 0 0 100%;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        input[type="date"],
+        input[type="text"] {
+            flex: 1 1 calc(50% - 4px); /* Adjust width based on your preference */
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            flex: 0 0 100%;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            border-radius: 4px;
+            color: #155724;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Maximum Temperature Prediction</h2>
+
+    <form action="/predict_temp" method="post">
+        <label for="inputDate">Enter Date:</label>
+        <input type="date" id="inputDate" name="inputDate" required>
+        <input type="text" id="sun_degree" name="sun_degree" placeholder="Sun Degree">
+        <input type="text" id="moon_degree" name="moon_degree" placeholder="Moon Degree">
+        <input type="text" id="mars_degree" name="mars_degree" placeholder="Mars Degree">
+        <input type="text" id="mercury_degree" name="mercury_degree" placeholder="Mercury Degree">
+        <input type="text" id="venus_degree" name="venus_degree" placeholder="Venus Degree">
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction_result %}
+        <div id="result">
+            <p>Prediction: {{ prediction_result }}</p>
+        </div>
+    {% endif %}
+
+</body>
+</html>
